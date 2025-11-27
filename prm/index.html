@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bishnoi Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: #0f0f0f; color: #ffffff; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    .hero-wrap { position: relative; min-height: 80vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 20px; }
+    .hero-bg { position: absolute; inset: 0; z-index: -3; background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1600'); background-size: cover; background-position: center; filter: brightness(0.3) contrast(1.2); transform: scale(1.1); }
+    .hero-layer { position: absolute; border-radius: 50%; filter: blur(70px) opacity(.6); mix-blend-mode: screen; }
+    .l1 { width: 60vmax; height: 60vmax; right: -15%; top: -12%; background: linear-gradient(45deg, #6C63FF, #a498ff); }
+    .l2 { width: 55vmax; height: 55vmax; left: -18%; bottom: -15%; background: linear-gradient(45deg, #4BA3F3, #84caff); }
+    .hero-card { width: min(880px,95%); padding: 28px; text-align: center; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px) saturate(120%); color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; }
+    .profile-photo { width: 170px; height: 170px; border-radius: 50%; overflow: hidden; border: 4px solid rgba(255,255,255,0.3); margin-bottom: 12px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease; }
+    .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-photo.zoomed { transform: scale(1.5); z-index: 999; position: relative; }
+    .hero-title { font-size: 2.4rem; font-weight: 700; }
+    .hero-sub { margin-top: 4px; font-size: 1.1rem; opacity: 0.9; }
+    .typewriter { margin-top: 8px; font-weight: 600; font-size: 1rem; }
+    .cursor { display: inline-block; width: 2px; height: 1.2em; background: white; margin-left: 6px; animation: blink 0.8s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .section { margin: 40px 0; padding: 24px; border-radius: 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+    .section h2 { text-align: center; margin-bottom: 18px; }
+    .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 10px; }
+    .social-btn { padding: 12px 20px; border-radius: 50px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #ffffff; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: .3s; }
+    .social-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; }
+    .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 16px; cursor: pointer; transition: transform .4s, box-shadow .4s; }
+    .gallery-grid img:hover { transform: scale(1.07); box-shadow: 0 15px 25px rgba(0,0,0,0.7); }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: .35s; }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-width: 90%; max-height: 85%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2rem; color: #fff; cursor: pointer; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 50%; user-select: none; }
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
+    footer { text-align: center; margin: 60px 0 20px; color: #ffffff; opacity: 0.7; }
+    @media(max-width:900px){ .gallery-grid img{ height:180px; } }
+    @media(max-width:600px){ .hero-title{ font-size:1.9rem;} .profile-photo{ width:100px;height:100px; } .gallery-grid img{ height:150px; } }
+  </style>
+</head>
+<body>
+  <div class="hero-wrap" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-layer l1" id="layer1"></div>
+    <div class="hero-layer l2" id="layer2"></div>
+    <div class="hero-card" id="heroCard">
+      <div class="profile-photo" id="profilePhoto"><img src="7.jpg" alt="Profile"></div>
+      <div class="hero-title"> PRAMOD BISHNOI</div>
+      <div class="hero-sub">B.Sc.B.ed Student </div>
+      <div class="typewriter" id="typewriter"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="section">
+      <h2>About Me</h2>
+      <p style="text-align:center;line-height:1.7;">I AM FROM RAWLA MANDI, I STUDY IN BSC B.ED .</p>
+      <div class="socials">
+        <a class="social-btn" href="https://www.instagram.com/parmod_9729?igsh=em1jOXZzNWx0N2Rj" id="insta">📷 INSTAGRAM</a>
+        <a class="social-btn" href="https://www.snapchat.com/add/parmodsuthar29?share_id=yRbbRteFUg4&locale=en-IN" id="snapchat">💻 SNAPCHAT</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Photo Gallery</h2>
+      <div class="gallery-grid" id="gallery">
+        <img src="7.jpg" class="jpg" alt="Gallery Image 1">
+        <img src="1.jpg" class="jpg" alt="Gallery Image 2">
+        <img src="5.jpg" class="jpg" alt="Gallery Image 3">
+        <img src="4.jpg" class="jpg" alt="Gallery Image 4">
+         <img src="6.jpg" class="jpg" alt="Gallery Image 5">
+      </div>
+    </section>
+
+    <footer>© 2025 Bishnoi | Student Portfolio</footer>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="arrow left" id="prev">&#10094;</div>
+    <img src="" id="lightImg">
+    <div class="arrow right" id="next">&#10095;</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    (function(){
+      const el = document.getElementById('typewriter');
+      const phrases = ["PRAMOD", "SUTHAR", "BISHNOI"];
+      let p=0,i=0,fwd=true; const pause=1200;
+      function tick(){
+        const str = phrases[p];
+        el.textContent = str.slice(0,i);
+        if(!el.querySelector('.cursor')){const c=document.createElement('span');c.className='cursor';el.appendChild(c);}
+        if(fwd){ if(i < str.length){ i++; setTimeout(tick,60);} else{ fwd=false; setTimeout(tick,pause); } }
+        else { if(i>0){i--; setTimeout(tick,40);} else{ fwd=true; p=(p+1)%phrases.length; setTimeout(tick,200); } }
+      }
+      tick();
+    })();
+
+    const gallery = document.getElementById('gallery');
+    const images = Array.from(gallery.querySelectorAll('.jpg'));
+    const box = document.getElementById('lightbox');
+    const lightImg = document.getElementById('lightImg');
+    let currentIndex = 0;
+
+    function openLightbox(index){
+      currentIndex = index;
+      lightImg.src = images[currentIndex].src;
+      box.classList.add('active');
+    }
+
+    images.forEach((img, i)=>{
+      img.addEventListener('click', ()=>{
+        openLightbox(i);
+      });
+    });
+
+    document.getElementById('next').addEventListener('click', e=>{
+      e.stopPropagation();
+      currentIndex = (currentIndex+1) % images.length;
+      lightImg.src = images[currentIndex].src;
+    });
+
+    document.getElementById('prev').addEventListener('click', e=>{
+      e.stopPropagation();
+      currentIndex = (currentIndex-1 + images.length) % images.length;
+      lightImg.src = images[currentIndex].src;
+    });
+
+    box.addEventListener('click', ()=>{
+      box.classList.remove('active');
+    });
+
+    // Profile photo zoom
+    const profilePhoto = document.getElementById('profilePhoto');
+    profilePhoto.addEventListener('click', ()=>{
+      profilePhoto.classList.toggle('zoomed');
+    });
+
+    // GSAP scroll animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to("#heroBg",{backgroundPosition:"center 30%",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:1}});
+    gsap.to("#heroCard",{y:-80,scale:0.96,scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:1}});
+    gsap.to("#layer1",{x:-60,y:140,scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:1}});
+    gsap.to("#layer2",{x:80,y:-140,scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:1}});
+    gsap.utils.toArray(".section").forEach(sec=>{ gsap.from(sec,{opacity:0,y:20,duration:0.9,scrollTrigger:{trigger:sec,start:"top 85%"}}); });
+  </script>
+</body>
+</html>
